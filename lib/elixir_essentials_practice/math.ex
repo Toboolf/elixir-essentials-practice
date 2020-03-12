@@ -17,4 +17,8 @@ defmodule ElixirEssentialsPractice.Math do
     def do_sieve([1|t], primes), do: do_sieve( t,primes )
     def do_sieve([h|t], primes), do: do_sieve( (for x <- t, rem(x,h) != 0, do: x), [h|primes] )
 
+    def fibonacci(n), do: fibonacci([1,0],0,1,1,n)
+    defp fibonacci(list, n1, n2, index, max) when index == max, do: [n1+n2|list]
+    defp fibonacci(list, n1, n2, index, max), do: fibonacci([n1+n2|list], n1+n2,n2, index + 1, max)
+
 end
